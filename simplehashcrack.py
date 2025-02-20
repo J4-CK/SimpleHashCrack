@@ -1,4 +1,5 @@
 import hashlib
+import time
 
 # Supported hash types
 HASH_FUNCTIONS = {
@@ -17,6 +18,7 @@ def load_hash():
 def dictionary_attack(hash_to_crack, wordlist_file, hash_type):
     with open(wordlist_file, "r", encoding="latin-1") as f:
         for word in f:
+            time.sleep(0.25)
             word = word.strip()
             hash_func = HASH_FUNCTIONS[hash_type]
             hashed_word = hash_func(word.encode()).hexdigest()
